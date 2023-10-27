@@ -18,8 +18,8 @@ export class AllusersComponent {
   user: User = new User();
   isUpdateModal: boolean = false;
   isAddModal: boolean = false;
-  selectedUserType: any = -1;
-  currentUser!:User;
+  selectedUserType?:number;
+  currentUser:User=new User();
   public registerRequest: CreateUserRequest=new CreateUserRequest();
   constructor(private readonly service: ApiService,private readonly auth:AuthService) { }
   async ngOnInit() {
@@ -53,12 +53,15 @@ export class AllusersComponent {
 
   }
   openModalAdd() {
+
 this.isAddModal=true;
+
 
   }
   openModalUpdate(user: User) {
     this.isUpdateModal = true
     this.user = user;
+    this.selectedUserType=user.userType;
 
 
   }

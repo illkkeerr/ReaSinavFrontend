@@ -97,7 +97,7 @@ this.isAddModal=true;
   }
 
   async addUser(){
-    console.log('çalıştır')
+    //console.log('çalıştır')
     /*await this.service.createEntity(this.registerRequest,'User').then((res)=>{
       if(res?.status==ResponseStatus.Ok){
         alert("Kullanıcı Eklendi");        

@@ -63,7 +63,7 @@ export class AuthService {
       const profileResponse = await this.apiService
         .getProfileInfo()
         .toPromise();
-        console.log(profileResponse);
+        //console.log(profileResponse);
       status = profileResponse!.status;
       /* Profil bilgileri yanıtı başarılı ise, bu bilgileri sessionStorage'e kaydeder
        ve currentUserSubject'e yeni bir değer olarak atar.

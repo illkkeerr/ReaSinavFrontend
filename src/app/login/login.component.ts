@@ -59,16 +59,16 @@ export class LoginComponent {
   }
 
   confirmationMail() {
-    console.log(this.mail + "mail");
+    //console.log(this.mail + "mail");
     
     this.mail!.subject = "Onay Şifresi";
     this.confirmCode = this.generateVerificationCode();
     this.mail!.body = "Onay şifreniz=" + this.confirmCode + " bu şifreyi ilgili yere yazdıktan sonra kullanıcı şifrenizi değiştirebilirsiniz."
-    console.log(this.mail + "mail")
+    //console.log(this.mail + "mail")
     this.apiService.sendEmail(this.mail!).subscribe(
       response => {
 
-        console.log('E-posta gönderildi:', response);
+        //console.log('E-posta gönderildi:', response);
         this.message = 'E-posta gönderildi';
         this.isMailCame = true;
       },
@@ -80,12 +80,12 @@ export class LoginComponent {
   }
 
   confirmCodeMethod() {
-    console.log(this.confirmCodeInput)
+   // console.log(this.confirmCodeInput)
     if (this.confirmCode == this.confirmCodeInput) {
       this.isMailCame = false;
       this.message = 'onay kodunuz doğru şimdi şifrenizi değiştirebilirsiniz'
       this.isCodeCame=true;
-      console.log(this.mail?.recepients)      
+      //console.log(this.mail?.recepients)      
     }
     else {
       this.message = 'onay kodunuz yanlış tekrar deneyin'

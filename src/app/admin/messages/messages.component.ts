@@ -51,7 +51,7 @@ export class MessagesComponent {
     this.istekAbone=interval(4000).subscribe(() => {
         this.getAllMessages(item.id);
          this.isOpen = true;
-         console.log("tetikleme")
+        // console.log("tetikleme")
       });
     
   }

@@ -71,9 +71,9 @@ await this.apiService.getAllEntities(User).subscribe((res)=>{
     this.customerBalance.amountOfMoney=this.accountHistory.amountOfMoney*-1;
     this.receiverBalance.id=this.accountHistory.receiverId;
     this.receiverBalance.amountOfMoney=this.accountHistory.amountOfMoney;
-    console.log(this.accountHistory)
-    console.log(this.customerBalance)
-    console.log(this.receiverBalance)
+    //console.log(this.accountHistory)
+    //console.log(this.customerBalance)
+    //console.log(this.receiverBalance)
     await this.apiService.createEntity(this.accountHistory,'AccountHistory').then((res)=>{
       
       if(res?.status==ResponseStatus.Ok){

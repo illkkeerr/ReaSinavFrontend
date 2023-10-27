@@ -1,0 +1,35 @@
+
+<h2>Bankadaki Bütün Para Gönderme İşlemleri Listesi</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Gönderici Id</th>
+            <th scope="col">Gönderici Adı</th>
+            <th scope="col">Alıcı Id</th>
+            <th scope="col">Alıcı Adı</th>
+            <th scope="col">Gönderilen Miktar</th>
+            <th scope="col">Gönderilme Tarihi</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of allHistory">
+            <th scope="row">{{item.id}}</th>
+            <th scope="row"><img src='https://picsum.photos/200/300?random={{item.id}}'
+                    style="width: 70px;height: 70px;"></th>
+            <td>{{item.customer!.id}}</td>
+            <td>{{item.customer!.fullName}}</td>
+            <td>{{item.receiver!.id}}</td>
+            <td>{{item.receiver!.fullName}}</td>
+            <td>{{item.amountOfMoney}} TL</td>
+            <td>{{item.createdAt!.substring(11,16)}}
+                {{item.createdAt!.substring(0,10)}}</td>
+      
+        </tr>
+
+    </tbody>
+</table>

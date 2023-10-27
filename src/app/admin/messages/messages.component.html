@@ -1,0 +1,73 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Ad-Soyad</th>
+            <th scope="col">Rol</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of users">
+
+
+            <th scope="row">{{item.id}}</th>
+            <th scope="row"><img src='https://picsum.photos/200/300?random={{item.id}}'
+                    style="width: 70px;height: 70px;"></th>
+            <td>{{item.fullName}}</td>
+            <td *ngIf="item.userType==0">Admin</td>
+            <td *ngIf="item.userType==1">Çalışan</td>
+            <td *ngIf="item.userType==2">Müşteri</td>
+
+            <th><button class="btn btn-success" (click)="openModal(item)">Seç</button></th>
+
+
+        </tr>
+
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal-container" *ngIf="isOpen">
+    <div class="modal-content">
+        <div>
+            <div style="display: flex; justify-content: space-between;">
+                <h3 style="margin-top: 15px;">{{otherUser.fullName}} ile sohbet </h3><img
+                    src='https://picsum.photos/200/300?random=1' style="width: 70px;height: 70px;">
+            </div>
+            <div class="message-container">
+
+                <div *ngFor="let item of messages">
+                    <div *ngIf="item.firstUserId==currentUser.id">
+                        <div class="message my-message col-8" style="margin-bottom: 0;">
+                            {{item.myMessage}}
+
+                        </div>
+                        <span style="font-size: 14px;">{{item.createdAt!.substring(11,16)}}
+                            {{item.createdAt!.substring(0,10)}}</span>
+                    </div>
+                    <div>
+                        <div *ngIf="item.firstUserId==otherUser.id">
+                            <div class="message other-message col-8" style="margin-left: 25%; margin-bottom: 0;">
+                                {{item.myMessage}}
+                            </div>
+                            <span style="font-size: 14px; margin-left: 75%;">{{item.createdAt!.substring(11,16)}}
+                                {{item.createdAt!.substring(0,10)}}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                  
+            </div>
+            <div style="display: flex;" class="mt-4">
+                <textarea [(ngModel)]="messageRequest.myMessage" [ngModelOptions]="{standalone:true}"
+                    class="form-control col-8" style="border-color: black;" rows="1"
+                    placeholder="Mesaj Yazınız"></textarea>
+                <button class="btn btn-success" (click)="sendMessage()">Gönder</button>
+            </div>
+            <br>
+            <button class="close" (click)="closeModal()">Kapat</button>
+        </div>

@@ -1,0 +1,96 @@
+<div style="z-index: 10; position: absolute;">
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="fa-solid fa-face-smile"></i>
+                <div class="logo_name">PANEL</div>
+            </div>
+            <i class="fa-solid fa-bars" id="btn" (click)="sidebarActive()"></i>
+        </div>
+
+        <ul class="nav_list">
+
+
+            <li>
+                <a href="/profile/info">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="links_name">Profilim</span>
+                </a>
+                <span class="tooltip">Profilim</span>
+            </li>
+            <!--Sadece Adminin MENULERİ  -->
+
+
+
+            <li *ngIf="currentUser.userType==0">
+                <a href="/profile/allusers">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="links_name">Kullanıcılar</span>
+                </a>
+                <span class="tooltip">Kullanıcılar</span>
+            </li>
+
+            <li *ngIf="currentUser.userType==0">
+                <a href="/profile/all-history">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <span class="links_name">Yapılan İşlemler</span>
+                </a>
+                <span class="tooltip">Yapılan İşlemler</span>
+            </li>
+            <!-- Sadece Adminin MENULERİ  -->
+            <li >
+                <a href="/profile/my-history">
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    <span class="links_name">Yaptığım İşlemler</span>
+                </a>
+                <span class="tooltip">Yaptığım İşlemler</span>
+            </li>
+            <li>
+                <a href="/profile/messages">
+                    <i class="fa-solid fa-message"></i>
+                    <span class="links_name">Mesajlarım</span>
+                </a>
+                <span class="tooltip">Mesajlarım</span>
+            </li>
+
+
+            <li>
+                <a href="/home">
+                    <i class="fa-solid fa-backward"></i>
+                    <span class="links_name">Web Sitesine Git</span>
+                </a>
+                <span class="tooltip">Web Sitesine Git</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="links_name">Ayarlar</span>
+                </a>
+                <span class="tooltip">Ayarlar</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="https://picsum.photos/200" alt="" />
+
+                    <div class="name_job">
+                        <div style="font-size: 11px;" class="name">{{currentUser.email}}</div>
+                        <div *ngIf="currentUser.userType==0" class="job">Admin</div>
+                        <div *ngIf="currentUser.userType==1" class="job">Çalışan</div>
+                        <div *ngIf="currentUser.userType==2" class="job">Müşteri</div>
+                    </div>
+                </div>
+
+                <a class="log_outs" style="cursor: pointer;" (click)="logOut()">
+                    <i class="bx bx-log-out" id="log_out" style="color: white;"></i>
+                </a>
+            </div>
+              
+        </div>
+    </div>
+</div>
+<div class="content" style="position: absolute; z-index: 1;">
+    <router-outlet></router-outlet>
+</div>

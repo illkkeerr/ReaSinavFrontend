@@ -1,0 +1,118 @@
+
+<h2>Kullanıcılar</h2>
+<button (click)="openModalAdd()" class="btn btn-success">Kullanıcı Ekle</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ad-Soyad</th>
+            <th scope="col">Bakiye</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of users">
+            <th scope="row">{{item.id}}</th>
+            <th scope="row"><img src='https://picsum.photos/200/300?random={{item.id}}'
+                    style="width: 70px;height: 70px;"></th>
+            <td>{{item.email}}</td>
+            <td>{{item.fullName}}</td>
+            <td>{{item.balance}} TL</td>
+            <td *ngIf="item.userType==0">Admin</td>
+            <td *ngIf="item.userType==1">Çalışan</td>
+            <td *ngIf="item.userType==2">Müşteri</td>
+            <td><button class="btn btn-warning" (click)="openModalUpdate(item)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteUser(item.id)">Sil</button></td>
+        </tr>
+
+    </tbody>
+</table>
+<div class="modal-container" *ngIf="isUpdateModal||isAddModal">
+    <div class="modal-content">
+       
+        <div>
+            <form *ngIf="isUpdateModal">
+                <h2>Kullanıcı Güncelle</h2>
+                <div class="form-group">
+                    <label>Id</label>
+                    <input [(ngModel)]="user.id" [ngModelOptions]="{standalone:true}" type="email" class="form-control"
+                        required readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" type="email"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input [(ngModel)]="user.fullName" [ngModelOptions]="{standalone:true}" type="text"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Bakiye (TL)</label>
+                    <input [(ngModel)]="user.balance" [ngModelOptions]="{standalone:true}" type="number"
+                        class="form-control" required>
+                </div>
+                <div>
+                    <select class="form-control" id="selectType" [value]="selectedUserType"
+                        (click)="selectUseTypeOnModal()">
+                        <option disabled selected value="-1">Rol Seçiniz:</option>
+                        <option  value="0">Admin</option>
+                        <option  value="1">Çalışan</option>
+                        <option  value="2">Müşteri</option>
+
+                    </select>
+                </div>
+
+
+                <button (click)="updateUser()" class="btn btn-success">Kullanıcı Güncelle
+                    </button>
+
+            </form>
+            <form *ngIf="isAddModal">
+                <h2>Kullanıcı Ekle</h2>
+                
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input [(ngModel)]="registerRequest.email" [ngModelOptions]="{standalone:true}" type="email" class="form-control"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Ad-Soyad</label>
+                    <input [(ngModel)]="registerRequest.fullName" [ngModelOptions]="{standalone:true}" type="text" class="form-control"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Şifre</label>
+                    <input [(ngModel)]="registerRequest.password" [ngModelOptions]="{standalone:true}" type="text" class="form-control"
+                        required>
+                </div>
+                <div>
+                    <select class="form-control" id="selectType" [value]="selectedUserType"
+                        (click)="selectUseTypeOnModal()">
+                        <option disabled selected value="-1">Rol Seçiniz:</option>
+                        <option  value="0">Admin</option>
+                        <option  value="1">Çalışan</option>
+                        <option  value="2">Müşteri</option>
+
+                    </select>
+                </div>
+
+
+                <button (click)="addUser()" class="btn btn-success">Kullanıcı Ekle
+                    </button>
+
+            </form>
+        </div>
+        <br>
+
+        <button (click)="closeModal()">Kapat</button>
+          
+    </div>
+</div>

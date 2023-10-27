@@ -1,6 +1,21 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+
+@media screen and (max-width: 1280px) {
+    .content {
+      margin-left: 78px;
+    }
+  }
+  
+  @media screen and (min-width: 1300px) {
+    .content {
+      margin-left: 240px;
+  
+  
+    }
+  }
+/*Alttaki özellikler sidebarın cssleri için*/
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +40,7 @@ body {
   left: 0;
   height: 100%;
   width: 78px;
-  background: #11101d;
+  background: #04233b;
   padding: 6px 14px;
   transition: all 0.5 ease;
 }
@@ -198,7 +213,7 @@ body {
 }
 
 .sidebar.active .profile_content .profile {
-  background: #1d1b31;
+  background: #04233b;
 }
 
 .profile_content .profile .profile_details {
@@ -245,7 +260,7 @@ body {
   border-radius: 12px;
   text-align: center;
   transition: all 0.5s ease;
-  background: #1d1b31;
+  background: #04233b;
 }
 
 .sidebar.active .profile #log_out {
@@ -277,4 +292,5 @@ body {
   left: 78px;
   transition: all 0.5s ease;
 }
+
 

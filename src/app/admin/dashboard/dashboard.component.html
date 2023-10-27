@@ -1,0 +1,94 @@
+<div class="container mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <img
+                src="https://picsum.photos/200" height="150" width="150" style="border-radius: 5%;" /> <span
+                class="name mt-3">{{currentUser.fullName}}</span> <span class="idd">{{currentUser.email}}</span>
+            <span *ngIf="currentUser.userType==0" class="idd">Admin</span>
+            <span *ngIf="currentUser.userType==1" class="idd">Çalışan</span>
+            <span *ngIf="currentUser.userType==1" class="idd">Müşteri</span>
+            <span class="idd">ID:{{currentUser.id}}</span>
+
+            <h6 style="margin-bottom: 0;" class="mt-3">Toplam Bakiye</h6>
+            <div class="d-flex flex-row justify-content-center align-items-center mt-0"> <span
+                    class="number">{{currentUser.balance}} <span class="follow">TL</span></span> </div>
+            <div class=" d-flex mt-2"> <button class="btn1 btn-dark" (click)="openModal()">Profili Düzenle</button>
+            </div>
+
+
+            <div class=" d-flex mt-4"> <button class="btn1 btn-dark" (click)="openSend()">Para Gönder</button>
+            </div>
+
+
+
+            <div class="text mt-3"> <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at felis
+                    nisl.<br><br> Nam facilisis sapien sed tortor tempus, a condimentum dolor suscipit.</span> </div>
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i
+                        class="fa-brands fa-twitter mr-2"></i></span> <span><i
+                        class="fa-brands fa-facebook mr-2"></i></span>
+                <span><i class="fa-brands fa-instagram mr-2"></i></span> <span><a
+                        href="https://www.linkedin.com/in/ilker-%C5%9Fenel-112363221/"><i
+                            class="fa-brands fa-linkedin"></i></a></span>
+            </div>
+            <div class=" px-2 rounded mt-4 date "> <span class="join">Joined
+                    {{currentUser.createdAt?.toString()?.substring(0,10)}}</span> </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-content" *ngIf="isOpen">
+    <h2>Profil Bilgileri</h2>
+    <div>
+        <form>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input [(ngModel)]="currentUser!.email" [ngModelOptions]="{standalone: true}" type="email"
+                            class="form-control" id="Email" name="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="FullName">Ad Soyad:</label>
+                        <input [(ngModel)]="currentUser!.fullName" [ngModelOptions]="{standalone: true}" type="text"
+                            class="form-control" id="FullName" name="FullName" required>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn2" (click)="updateProfile()">Bilgileri Güncelle</button>
+        </form>
+    </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>   
+</div>
+<div class="modal-content" *ngIf="isOpenSend">
+    <h2>Para Gönderme İşlemi</h2>
+    <div>
+        <form>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+
+                    <div class="form-group">
+                        <label for="FullName">Para Miktarı</label>
+                        <input [(ngModel)]="accountHistory!.amountOfMoney" [ngModelOptions]="{standalone: true}"
+                            type="number" class="form-control" id="FullName" name="FullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Alıcı:</label>
+                        <select class="form-control" id="selectType" [value]="selectedUserId" (click)="selectUser()">
+                            <option disabled selected value="-1">Para Gönderilecek Müşteriyi Seç</option>
+                            <option *ngFor="let item of allUsers" value="{{item!.id}}">{{item.fullName}}</option>
+
+
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <button class="btn2" (click)="sendMoney()">Para Gönderme</button>
+        </form>
+    </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeAllModal()">Kapat</button>   
+</div>

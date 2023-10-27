@@ -1,0 +1,49 @@
+<section class="contact_section layout_padding-top" style="margin-top: 0px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 offset-md-1">
+                <div class="heading_container">
+                    <h2>
+                        Contact Us
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 offset-md-1">
+                <div class="form_container">
+                    <form action="">
+                        <div>
+                            <input  [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" placeholder="Your Name" />
+                        </div>
+                        <div>
+                            <input  [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" type="text" placeholder="Phone Number" />
+                        </div>
+                        <div>
+                            <input  [(ngModel)]="mail" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email" />
+                        </div>
+                        <div>
+                            <input [(ngModel)]="body" [ngModelOptions]="{standalone: true}" type="text" class="message-box" placeholder="Message" />
+                        </div>
+                        <div class="btn_box">
+                            <button (click)="sendMail()"> 
+                                SEND
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 px-0">
+                <div class="map_container">
+                    <div class="map">
+                        <div id="googleMap">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4315.0272389608745!2d28.8876258177214!3d41.08121393008642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab04f955b9afd%3A0x5a8a9a66f73a9375!2sYenimahalle!5e0!3m2!1str!2str!4v1687418910926!5m2!1str!2str"
+                                height="450" style="border:0;width:100%;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

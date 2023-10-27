@@ -21,7 +21,7 @@ export class DashboardComponent {
     this.getAllUsers();
   }
   accountHistory:AccountHistoryRequest=new AccountHistoryRequest()
-  currentUser!: User;
+  currentUser: User=new User();
   userRequest!:UserRequest;
   isOpen = false;
   isOpenSend=false;
@@ -102,11 +102,15 @@ await this.apiService.getAllEntities(User).subscribe((res)=>{
     this.userRequest.email=this.currentUser.email;
     this.userRequest.fullName=this.currentUser.fullName;
     this.userRequest.userType=this.currentUser.userType;
+    this.userRequest.balance=this.currentUser.balance;
+
+   
     
 
     this.apiService.updateEntity(this.currentUser.id,this.userRequest,User).then((res)=>{
       if(res?.status==ResponseStatus.Ok){
         alert("güncelleme başarılı");
+        this.closeModal();
       }
       else{
         alert("güncelleme başarısız");

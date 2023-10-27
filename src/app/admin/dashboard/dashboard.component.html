@@ -52,6 +52,11 @@
                         <input [(ngModel)]="currentUser!.fullName" [ngModelOptions]="{standalone: true}" type="text"
                             class="form-control" id="FullName" name="FullName" required>
                     </div>
+                      <div class="form-group">
+                        <label for="FullName">Ad Soyad:</label>
+                        <input [(ngModel)]="currentUser.balance" [ngModelOptions]="{standalone: true}" type="number" readonly
+                            class="form-control" id="FullName" name="FullName" required>
+                    </div>
                 </div>
 
             </div>
@@ -76,7 +81,7 @@
                     <div class="form-group">
                         <label for="Email">Alıcı:</label>
                         <select class="form-control" id="selectType" [value]="selectedUserId" (click)="selectUser()">
-                            <option disabled selected value="-1">Para Gönderilecek Müşteriyi Seç</option>
+                            <option disabled  selected>Para Gönderilecek Müşteriyi Seç</option>
                             <option *ngFor="let item of allUsers" value="{{item!.id}}">{{item.fullName}}</option>
 
 

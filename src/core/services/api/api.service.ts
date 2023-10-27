@@ -31,7 +31,7 @@ export class ApiService {
 
   //constructor fonksiyonu, HttpClient nesnesini enjekte eder ve HTTP isteklerini yapmak için kullanır.
 
-  constructor(private readonly http: HttpClient) { //console.log("Api Yenilendi"); }
+  constructor(private readonly http: HttpClient) { console.log("Api Yenilendi"); }
 
   //login fonksiyonu, kullanıcı giriş isteğini gerçekleştirir.
   // HttpClient.post fonksiyonunu kullanarak API'ye LoginRequest nesnesini ve isteği yapar.

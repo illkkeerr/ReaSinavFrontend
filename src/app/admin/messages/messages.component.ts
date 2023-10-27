@@ -40,8 +40,8 @@ export class MessagesComponent {
   async getAllMessages(id: any) {
    await this.apiService.getAllEntities(Message).subscribe((res) => {
      this.messages = res.data.filter(f => (f.firstUserId == id&&f.secondUserId==this.currentUser.id)||(f.secondUserId==id&&f.firstUser?.id==this.currentUser.id))
-      // //console.log("çalıştı");
-      // //console.log(this.messages);
+      // console.log("çalıştı");
+      // console.log(this.messages);
     })
   }
   openModal(item: User) {
@@ -51,7 +51,7 @@ export class MessagesComponent {
     this.istekAbone=interval(4000).subscribe(() => {
         this.getAllMessages(item.id);
          this.isOpen = true;
-         //console.log("tetikleme")
+         console.log("tetikleme")
       });
     
   }

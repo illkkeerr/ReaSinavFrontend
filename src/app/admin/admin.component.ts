@@ -24,7 +24,7 @@ export class AdminComponent {
   ngOnInit() {
     this.isOpen = JSON.parse(SidebarService.getIsOpenLocalStorage()!);
     SidebarService.dashboardNavigationIsOpen = this.isOpen ? true : false;
-    //console.log(SidebarService.dashboardNavigationIsOpen)
+    console.log(SidebarService.dashboardNavigationIsOpen)
     const sidebar = document.querySelector('.sidebar') as HTMLElement;
     this.isOpen ? sidebar.classList.add('active') : null;    
   }
@@ -36,13 +36,13 @@ export class AdminComponent {
     if (SidebarService.dashboardNavigationIsOpen) {
       SidebarService.DashboardClose();
       SidebarService.setIsOpenLocalStorage(false);
-      //console.log(SidebarService.dashboardNavigationIsOpen)
+      console.log(SidebarService.dashboardNavigationIsOpen)
       sidebar.classList.remove('active')
 
     } else {
       SidebarService.DashboardOpen();
       SidebarService.setIsOpenLocalStorage(true);
-      //console.log(SidebarService.dashboardNavigationIsOpen)
+      console.log(SidebarService.dashboardNavigationIsOpen)
       sidebar.classList.add('active')
     }
   }

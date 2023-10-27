@@ -38,7 +38,7 @@ export class organizatorMemberControl implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    //console.log('organizator member control');
+    console.log('organizator member control');
     // AuthService içindeki currentUser$ gözlemi ile kullanıcı bilgilerini kontrol edin.
     this.authService.currentUser.subscribe((user) => {
       if (user?.userType==1 || user?.userType==2) {
@@ -64,7 +64,7 @@ export class loginControl implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    //console.log('organizator member control');
+    console.log('organizator member control');
     // AuthService içindeki currentUser$ gözlemi ile kullanıcı bilgilerini kontrol edin.
     this.authService.currentUser.subscribe((user) => {
       if (user?.userType!=null) {
